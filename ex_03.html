@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World Animation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;900&display=swap');
+
+        #out {
+            font-family: 'Roboto', sans-serif; /* Corrected font-family to include sans-serif */
+            font-weight: 900;
+            font-size: 2em; /* Increased font size for visibility */
+            text-align: center; /* Center the text */
+            margin-top: 20%; /* Center the text vertically */
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="fade-container">
+            <span id="out" class="fade"></span> <!-- Removed initial text -->
+        </div>
+    </div>
+    <script>
+        // Animate function
+        function stepAnimateText(element, animation, delay) {
+            var text = $(element).text();
+            var curr = '';
+
+            for (var i = 0; i < text.length; i++) {
+                var character = text.charAt(i);
+                $(element).html(curr + '<span class="' + animation + '" style="-webkit-animation-delay: ' + i * delay + 's; animation-delay: ' + i * delay + 's">' + character + "</span>");
+                curr = $(element).html();
+            }
+        }
+
+        const delay = 0.02;
+
+        // Display function
+        function displayThisText(str) {
+            if (document.getElementById("out").innerHTML.length === 0) {
+                document.getElementById("out").innerHTML += "\n";
+            }
+            document.getElementById("out").innerHTML += str; // Adding "Hello World!" here
+            stepAnimateText('#out', 'bounceInDown', delay); // Animate the text
+        }
+
+        // Init on load
+        displayThisText("Hello World!"); // Call displayThisText to show Hello World!
+        
+        $('.fade-container').click(function() {
+            stepAnimateText('#out', 'bounceInDown', delay); // Animate again on click
+            return false;
+        });
+    </script>
+</body>
+</html>
