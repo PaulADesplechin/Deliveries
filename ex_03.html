@@ -8,12 +8,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;900&display=swap');
 
         #out {
-            font-family: 'Roboto', sans-serif; /* Corrected font-family to include sans-serif */
+            font-family: 'Roboto', sans-serif; 
             font-weight: 900;
-            font-size: 2em; /* Increased font size for visibility */
-            text-align: center; /* Center the text */
-            margin-top: 20%; /* Center the text vertically */
-        }
+            font-size: 2em; 
+            text-align: center; 
+            margin-top: 20%; 
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -24,7 +23,7 @@
         </div>
     </div>
     <script>
-        // Animate function
+        
         function stepAnimateText(element, animation, delay) {
             var text = $(element).text();
             var curr = '';
@@ -38,20 +37,20 @@
 
         const delay = 0.02;
 
-        // Display function
+        
         function displayThisText(str) {
             if (document.getElementById("out").innerHTML.length === 0) {
                 document.getElementById("out").innerHTML += "\n";
             }
-            document.getElementById("out").innerHTML += str; // Adding "Hello World!" here
-            stepAnimateText('#out', 'bounceInDown', delay); // Animate the text
+            document.getElementById("out").innerHTML += str; 
+            stepAnimateText('#out', 'bounceInDown', delay); 
         }
 
-        // Init on load
-        displayThisText("Hello World!"); // Call displayThisText to show Hello World!
+     
+        displayThisText("Hello World!"); 
         
         $('.fade-container').click(function() {
-            stepAnimateText('#out', 'bounceInDown', delay); // Animate again on click
+            stepAnimateText('#out', 'bounceInDown', delay); 
             return false;
         });
     </script>
